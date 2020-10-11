@@ -1,4 +1,6 @@
 .todo-app {
   margin: 2rem auto 0 auto;
+  padding: 0  15px;
+  min-width: 320px;
   max-width: 500px;
 }
