@@ -3,12 +3,19 @@ import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
 
-	onLabelClick = () => {
-		console.log(`DONE: ${this.props.label}`)
+	state = {
+		done: false
 	}
 
+	onLabelClick = () => {
+		this.setState({
+			done: !this.state.done
+		});
+	};
+
 	render() {
-		const {label, important = false, done = false} = this.props;
+		const { label, important = false } = this.props;
+		const { done } = this.state;
 
 		let classNames = 'todo-list-item';
 		if (important) {
@@ -16,7 +23,10 @@ export default class TodoListItem extends Component {
 		};
 		if (done) {
 			classNames += ' done';
-		};
+		}
+		else {
+			classNames.replace(' done', '');
+		}
 		return (
 			<span className={classNames}>
 				<span

@@ -11,9 +11,9 @@ const App = () => {
 	const filter = 'active';
 
 	const todoData = [
-	  { label: 'Drink Coffee', important: false, done: false, id: 1 },
-	  { label: 'Eat cheese', important: true, done: false, id: 2 },
-	  { label: 'Play guitar', important: false, done: true, id: 3  },
+	  { label: 'Drink Coffee', important: false, id: 1 },
+	  { label: 'Eat cheese', important: true, id: 2 },
+	  { label: 'Play guitar', important: false, id: 3  },
 	];
  
 	return (
