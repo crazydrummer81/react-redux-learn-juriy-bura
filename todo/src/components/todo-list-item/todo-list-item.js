@@ -4,18 +4,27 @@ import './todo-list-item.css';
 export default class TodoListItem extends Component {
 
 	state = {
-		done: false
+		done: false,
+		important: false
 	}
 
 	onLabelClick = () => {
-		this.setState({
-			done: !this.state.done
+		this.setState(({done}) => { // Важно именно так, т.к. setState работает асинхроно
+			return {                 // ОБЯЗАТЕЛЬНО, ЕСЛИ STATE ИМЕЕТ ПРЕДЫДУЩЕЕ ЗНАЧЕНИЕ
+				done: !done 
+			}
 		});
 	};
-
+	onMarkImportant = () => {
+		this.setState(({important}) => { // Важно именно так, т.к. setState работает асинхроно
+			return {                      // ОБЯЗАТЕЛЬНО, ЕСЛИ STATE ИМЕЕТ ПРЕДЫДУЩЕЕ ЗНАЧЕНИЕ
+				important: !important
+			}
+		});
+	};
 	render() {
-		const { label, important = false } = this.props;
-		const { done } = this.state;
+		const { label = false, onDeleted } = this.props;
+		const { done, important } = this.state;
 
 		let classNames = 'todo-list-item';
 		if (important) {
@@ -36,12 +45,14 @@ export default class TodoListItem extends Component {
 				</span>
 		
 				<button type="button"
-						  className="btn btn-outline-success btn-sm float-right">
+						  className="btn btn-outline-success btn-sm float-right"
+						  onClick={ this.onMarkImportant }>
 					<i className="fa fa-exclamation"></i>
 				</button>
 	
 				<button type="button"
-						  className="btn btn-outline-danger btn-sm float-right">
+						  className="btn btn-outline-danger btn-sm float-right"
+						  onClick={onDeleted}>
 					<i className="fa fa-trash-o"></i>
 				</button>
 			</span>
