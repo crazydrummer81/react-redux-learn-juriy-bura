@@ -16,4 +16,7 @@ width: auto;
 flex-grow: 1;
 margin-right: 3px;
 }
- 
+
+.item-add-form input {
+	margin-right: 3px;
+}

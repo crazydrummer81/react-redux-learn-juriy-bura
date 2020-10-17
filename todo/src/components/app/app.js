@@ -16,7 +16,8 @@ export default class App extends Component {
 			this.createTodoItem('Drink Coffee'),
 			this.createTodoItem('Eat cheese'),
 			this.createTodoItem('Play guitar')
-		]
+		],
+		filter: 'all'
 	};
 
 	createTodoItem(label) {
@@ -26,7 +27,7 @@ export default class App extends Component {
 			done: false, 
 			id: this.maxId++
 		}
-	}
+	};
 
 	deleteItem = (id) => {
 		this.setState(({ todoData }) => { //! поэтому делаем так!
@@ -42,7 +43,8 @@ export default class App extends Component {
 				todoData: newArray
 			}
 		});
-	}
+	};
+
 	addItem = (text) => {
 		console.log('Added', text);
 		const newItem = this.createTodoItem(text);
@@ -51,7 +53,7 @@ export default class App extends Component {
 			const newArray = [...todoData, newItem];
 			return { todoData: newArray }
 		});
-	}
+	};
 
 	toggleProperty(arr, id, propName) {
 		const idx = arr.findIndex((el) => el.id === id);
@@ -63,7 +65,7 @@ export default class App extends Component {
 			...arr.slice(idx + 1)
 		];
 
-	}
+	};
 	
 	onToggleDone = (id) => {
 		this.setState(({ todoData }) => { //! поэтому делаем так!
@@ -82,6 +84,13 @@ export default class App extends Component {
 		});
 	};
 
+	onFilterChange = (key) => {
+		// console.log(key);
+		this.setState({
+			filter: key
+		})
+	};
+
 	render() {
 
 		const {todoData} = this.state;
@@ -94,13 +103,16 @@ export default class App extends Component {
 				<AppHeader toDo={todoCount} done={doneCount}/>
 				<div className="search-panel d-flex">
 					<SearchPanel />
-					<ItemStatusFilter />
+					<ItemStatusFilter 
+						filter = {this.state.filter}
+						onFilterChange = {this.onFilterChange} />
 				</div>
 				<TodoList
 					todos={ todoData }
 					onDeleted={ this.deleteItem }
 					onToggleDone = { this.onToggleDone }
 					onToggleImportant = { this.onToggleImportant }
+					filter = {this.state.filter}
 				/>
 				<ItemAddForm
 					onItemAdded={this.addItem}
