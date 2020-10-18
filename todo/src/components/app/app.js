@@ -86,25 +86,29 @@ export default class App extends Component {
 	};
 
 	onFilterChange = (key) => {
-		// console.log(key);
 		this.setState(() => {
 			return { filter: key }
 		});
 	};
 
-	onSearchChange = (text) => {
-		this.setState(() => {
-			return {
-				searchText: text
-			}
-		});
+	onSearchChange = (searchText) => {
+		this.setState({ searchText });
 	};
+
+	search(items, searchText) {
+		if(searchText.length === 0) {
+			return items;
+		};
+		return items.filter((item) => {
+			return item.label.toLowerCase().indexOf(searchText.toLowerCase()) > -1;
+		})
+	}
 
 	render() {
 
-		const {todoData} = this.state;
-		const doneCount = todoData
-								.filter((el) => el.done).length;
+		const {todoData, searchText} = this.state;
+		const visibleItems = this.search(todoData, searchText);
+		const doneCount = todoData.filter((el) => el.done).length;
 		const todoCount = todoData.length - doneCount;
 
 		return (
@@ -119,11 +123,10 @@ export default class App extends Component {
 						onFilterChange = {this.onFilterChange} />
 				</div>
 				<TodoList
-					todos={ todoData }
+					todos={ visibleItems }
 					onDeleted={ this.deleteItem }
 					onToggleDone = { this.onToggleDone }
 					onToggleImportant = { this.onToggleImportant }
-					filter = {this.state.filter}
 					searchText = {this.state.searchText}
 				/>
 				<ItemAddForm
