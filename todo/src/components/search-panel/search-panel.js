@@ -10,7 +10,8 @@ export default class SearchPanel extends Component {
 		const newText = e.target.value;
 		this.setState(() => {
 			return {label: newText}
-		}, () => this.props.onSearchChange(this.state.label));
+		}, () =>
+		this.props.onSearchChange(this.state.label));
 	};
 
 	render() { 

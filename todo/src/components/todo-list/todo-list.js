@@ -4,8 +4,7 @@ import './todo-list.css';
 import TodoListItem from '../todo-list-item';
 
 const TodoList = ({ todos, onDeleted, onToggleImportant, onToggleDone, filter, searchText }) => {
-	// console.dir(todos);
-	// console.log(filter);
+	
 	const elements = todos.map((item) => {
 		
 		let isInFilter = true;
@@ -23,7 +22,6 @@ const TodoList = ({ todos, onDeleted, onToggleImportant, onToggleDone, filter, s
 				break;
 		};
 
-		console.log(searchText);
 		isInFilter &= item.label.toLowerCase().search(searchText.toLowerCase().trim()) !== -1;
 
 		const { id, ...itemProps } = item;
