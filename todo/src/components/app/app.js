@@ -17,7 +17,8 @@ export default class App extends Component {
 			this.createTodoItem('Eat cheese'),
 			this.createTodoItem('Play guitar')
 		],
-		filter: 'all'
+		filter: 'all',
+		searchText: '' 
 	};
 
 	createTodoItem(label) {
@@ -86,9 +87,17 @@ export default class App extends Component {
 
 	onFilterChange = (key) => {
 		// console.log(key);
-		this.setState({
-			filter: key
-		})
+		this.setState(() => {
+			return { filter: key }
+		});
+	};
+
+	onSearchChange = (text) => {
+		this.setState(() => {
+			return {
+				searchText: text
+			}
+		});
 	};
 
 	render() {
@@ -102,7 +111,9 @@ export default class App extends Component {
 			<div className="todo-app">
 				<AppHeader toDo={todoCount} done={doneCount}/>
 				<div className="search-panel d-flex">
-					<SearchPanel />
+					<SearchPanel 
+						searchText={this.state.searchText}
+						onSearchChange={this.onSearchChange}/>
 					<ItemStatusFilter 
 						filter = {this.state.filter}
 						onFilterChange = {this.onFilterChange} />
@@ -113,6 +124,7 @@ export default class App extends Component {
 					onToggleDone = { this.onToggleDone }
 					onToggleImportant = { this.onToggleImportant }
 					filter = {this.state.filter}
+					searchText = {this.state.searchText}
 				/>
 				<ItemAddForm
 					onItemAdded={this.addItem}

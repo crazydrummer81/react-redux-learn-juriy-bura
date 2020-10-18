@@ -4,12 +4,9 @@ import './item-status-filter.css';
 const filterButtons = [
 	{ name: 'all', label: 'All' },
 	{ name: 'active', label: 'Active' },
+	{ name: 'important', label: 'Important' },
 	{ name: 'done', label: 'Done' },
 ];
-
-
-
-const filter = 'active';
 
 export default class ItemStatusFilter extends Component {
 
