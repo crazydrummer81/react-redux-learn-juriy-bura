@@ -1,0 +1,6 @@
+.error-indicator, .boom { color: orange; text-align: center; }
+.error-indicator span { display: block; }
+.boom { font-size: 1.5rem; }
+.error-indicator img {
+	max-width: 150px;
+}

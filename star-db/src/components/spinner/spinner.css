@@ -1,0 +1,92 @@
+@keyframes ldio-erhkzm4vk1s {
+  0% { transform: rotate(0) }
+  100% { transform: rotate(360deg) }
+}
+.ldio-erhkzm4vk1s div { box-sizing: border-box!important }
+.ldio-erhkzm4vk1s > div {
+  position: absolute;
+  width: 105px;
+  height: 105px;
+  top: -2.5px;
+  left: -2.5px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  border-color: #93dbe9 transparent #93dbe9 transparent;
+  animation: ldio-erhkzm4vk1s 1s linear infinite;
+}
+
+.ldio-erhkzm4vk1s > div:nth-child(2), .ldio-erhkzm4vk1s > div:nth-child(4) {
+  width: 93px;
+  height: 93px;
+  top: 3.5px;
+  left: 3.5px;
+  animation: ldio-erhkzm4vk1s 1s linear infinite reverse;
+}
+.ldio-erhkzm4vk1s > div:nth-child(2) {
+  border-color: transparent #689cc5 transparent #689cc5
+}
+.ldio-erhkzm4vk1s > div:nth-child(3) { border-color: transparent }
+.ldio-erhkzm4vk1s > div:nth-child(3) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+.ldio-erhkzm4vk1s > div:nth-child(3) div:before, .ldio-erhkzm4vk1s > div:nth-child(3) div:after { 
+  content: "";
+  display: block;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: -5px;
+  left: 45px;
+  background: #93dbe9;
+  border-radius: 50%;
+  box-shadow: 0 100px 0 0 #93dbe9;
+}
+.ldio-erhkzm4vk1s > div:nth-child(3) div:after {
+  left: -5px;
+  top: 45px;
+  box-shadow: 100px 0 0 0 #93dbe9;
+}
+
+.ldio-erhkzm4vk1s > div:nth-child(4) { border-color: transparent; }
+.ldio-erhkzm4vk1s > div:nth-child(4) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+.ldio-erhkzm4vk1s > div:nth-child(4) div:before, .ldio-erhkzm4vk1s > div:nth-child(4) div:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: -5px;
+  left: 39px;
+  background: #689cc5;
+  border-radius: 50%;
+  box-shadow: 0 88px 0 0 #689cc5;
+}
+.ldio-erhkzm4vk1s > div:nth-child(4) div:after {
+  left: -5px;
+  top: 39px;
+  box-shadow: 88px 0 0 0 #689cc5;
+}
+.loadingio-spinner-double-ring-1wkw2i0hoyd {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  overflow: hidden;
+  /* background: #f1f2f3; */
+}
+.ldio-erhkzm4vk1s {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(0.6);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-erhkzm4vk1s div { box-sizing: content-box; }

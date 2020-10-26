@@ -1,3 +1,5 @@
+// https://swapi.py4e.com/documentation#people
+
 import React from 'react';
 
 import './app.css';
@@ -9,15 +11,15 @@ import Header from '../header';
 
 const App = () => {
 	return (
-		<div>
+		<div className="container">
 			<Header />
 			<RandomPlanet />
 
 			<div className="row mb2">
-				<div className="cold-md-6">
+				<div className="container">
 					<ItemList />
 				</div>
-				<div className="col-md-6">
+				<div className="col-md-12">
 					<PersonDetails />
 				</div>
 			</div>

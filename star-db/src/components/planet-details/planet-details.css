@@ -1,0 +1,21 @@
+.planet-details {
+	display: flex;
+	margin-top: 1rem;
+	flex-direction: row;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+
+.planet-details .planet-image {
+	width: 30%;
+	/* height: 30%; */
+	border-radius: 10px;
+}
+
+.planet-details .h4	{
+	padding: .5rem;
+}
+
+.planet-details .card-body ul li {
+	border-bottom: 1px solid #444;
+}
