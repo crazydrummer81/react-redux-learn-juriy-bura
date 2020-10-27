@@ -1,4 +1,4 @@
-export default class SwapiServise {
+export default class SwapiService {
 
 	_apiBase = 'https://swapi.py4e.com/api';
  
@@ -15,7 +15,6 @@ export default class SwapiServise {
 	  const res = await this.getResource(`/people/`);
 	  return res.results.map(this._transformPerson);
 	};
- 
  
 	async getPerson(id) {
 		const person = await this.getResource(`/people/${id}`);
@@ -48,7 +47,7 @@ export default class SwapiServise {
 		return item.url.match(idRegExp)[1];
 	};
 
-	_transformPlanet(planet) {
+	_transformPlanet = (planet) => {
 		
 		return {
 			id: this._extractId(planet),
@@ -59,7 +58,7 @@ export default class SwapiServise {
 		};
 	};
 
-	_transformStarship(starShip) {
+	_transformStarship = (starShip) => {
 		return {
 			id: this._extractId(starShip),
 			name: starShip.name,
@@ -73,7 +72,7 @@ export default class SwapiServise {
 		}
 	};
 	
-	_transformPerson(person) {
+	_transformPerson = (person) => {
 		return {
 			id: this._extractId(person),
 			name: person.name,
@@ -84,7 +83,7 @@ export default class SwapiServise {
 	};
 };
  
-//  const swapi = new SwapiServise();
+//  const swapi = new SwapiService();
  
 //  swapi.getAllPeople().then((people) => {
 // 	people.forEach((person) => {

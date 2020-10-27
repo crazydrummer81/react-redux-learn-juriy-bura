@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './spinner.css';
 
 const Spinner = () => {
 	return (
-		<div class="loadingio-spinner-double-ring-1wkw2i0hoyd">
-			<div class="ldio-erhkzm4vk1s">
+		<div className="loadingio-spinner-double-ring-1wkw2i0hoyd">
+			<div className="ldio-erhkzm4vk1s">
 				<div></div>
 				<div></div>
 				<div><div></div></div>
