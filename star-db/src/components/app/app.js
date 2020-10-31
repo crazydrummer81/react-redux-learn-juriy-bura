@@ -8,34 +8,40 @@ import PersonDetails from '../person-details';
 import ItemList from '../item-list';
 import RandomPlanet from '../random-planet';
 import Header from '../header';
+import ErrorIndicator from '../error-indicator/error-indicator';
+import PeoplePage from '../people-page/people-page';
 
 export default class App extends Component {
 
 	state = {
-		selectedPerson: null
+		hasError: false
 	};
 
-	onPersonSelected = (id) => {
-		this.setState({
-			selectedPerson: id
-		});
+	// onPersonSelected = (id) => {
+	// 	this.setState({
+	// 		selectedPerson: id
+	// 	});
+	// };
+
+	componentDidCatch() {
+		console.log('componentDidCatch()');
+		this.setState({hasError: true});
 	};
 
 	render() {
-		return (
-		<div className="container">
-			<Header />
-			<RandomPlanet />
 
-			<div className="row mb2">
-				<div className="col-md-6">
-					<ItemList onItemSelected={this.onPersonSelected}/>
-				</div>
-				<div className="col-md-6">
-					<PersonDetails personId={this.state.selectedPerson}/>
-				</div>
+		if (this.setState.hasError) {
+			return <ErrorIndicator/>;
+		};
+
+		return (
+			<div className="container">
+				<Header />
+				<RandomPlanet />
+				<PeoplePage/>
+				<PeoplePage/>
+				<PeoplePage/>
 			</div>
-		</div>
-	);
-	}
+		);
+	};
 };

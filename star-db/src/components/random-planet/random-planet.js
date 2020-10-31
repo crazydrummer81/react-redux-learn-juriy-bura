@@ -23,7 +23,8 @@ export default class RandomPlanet extends Component {
 	};
 
 	componentWillUnmount() {
-		// console.log('componentWillUnmount()');
+		console.log('componentWillUnmount()');
+		clearInterval(this.interval);
 	};
 
 	onPlanetLoaded = (planet) => {
@@ -102,4 +103,5 @@ const PlanetView = ({planet}) => {
 			</div>
 		</React.Fragment>
 	);
-}
+};
+

@@ -29,7 +29,7 @@ export default class ItemList extends Component {
 			return (
 				<li className="list-group-item" 
 					key={id}
-					onClick={() => this.propsOnItemSelected(id)}>
+					onClick={() => this.props.onItemSelected(id)}>
 					{name}
 				</li>
 			);
@@ -40,14 +40,12 @@ export default class ItemList extends Component {
 
 		const { peopleList } = this.state;
 
-		if(!peopleList) {
-			return <Spinner/>
-		}
-
-		const items = this.renderItems(peopleList);
+		const spinner = peopleList ? null : <li className="list-group-item text-center"><Spinner/></li>;
+		const items = peopleList ? this.renderItems(peopleList) : null;
 
 		return (
 			<ul className="item-list list-group">
+				{spinner}
 				{items}
 			</ul>
 		);
