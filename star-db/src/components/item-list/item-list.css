@@ -7,3 +7,16 @@
 .item-list .list-group-item:hover {
 	background-color: #444;
 }
+
+.item-list strong {
+	color: #00bc8c;
+	font-weight: bold;
+}
+
+.item-list span {
+	font-size: .9em;
+}
+
+.item-list .list-group-item {
+	display: flex; justify-content: space-between;
+}

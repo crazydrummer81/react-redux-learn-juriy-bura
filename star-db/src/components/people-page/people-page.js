@@ -12,6 +12,8 @@ import PersonDetails from '../person-details';
 
 export default class PeoplePage extends Component {
 
+	swapiService = new SwapiService();
+
 	state = {
 		selectedPerson: 3,
 		gasError: false
@@ -23,7 +25,7 @@ export default class PeoplePage extends Component {
 		});
 	};
 
-	onPersonSelected = (selectedPerson) => {
+	onItemSelected = (selectedPerson) => {
 		this.setState({
 			selectedPerson
 		});
@@ -35,9 +37,16 @@ export default class PeoplePage extends Component {
 		}
 
 		return (
-			<div className="row mb2">
+			<div className="row mb2 people-page">
 				<div className="col-md-6">
-					<ItemList onItemSelected={this.onPersonSelected}/>
+					<ItemList 
+						onItemSelected={this.onItemSelected}
+						getData={this.swapiService.getAllPeople}
+						renderItem={({name, gender, birthYear}) => 
+								<React.Fragment>
+									<strong>{name}</strong> <span>gender: {gender}, BY: {birthYear}</span>
+								</React.Fragment>
+						}/>
 				</div>
 				<div className="col-md-6">
 					<PersonDetails personId={this.state.selectedPerson}/>

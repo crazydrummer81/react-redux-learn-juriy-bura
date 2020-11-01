@@ -8,29 +8,43 @@ import './item-list.css';
 
 export default class ItemList extends Component {
 
-	swapiService = new SwapiService();
+	// swapiService = new SwapiService();
+
+	
 	
 	state = {
-		peopleList: null
+		itemList: null
 	};
 
 	componentDidMount() {
-		this.swapiService
-			.getAllPeople()
-			.then((peopleList) => {
+
+		const { getData } = this.props;
+		console.log('getData:',getData());
+
+		getData()
+		// this.swapiService.getAllItem()
+			.then((itemList) => {
 				this.setState({
-					peopleList
+					itemList
 				});
 			});
 	};
 
 	renderItems(arr) {
-		return arr.map(({id, name}) => {
+		//todo people gender birthYear
+		//todo planet diametr
+		//todo starship model
+
+		return arr.map((item) => {
+			
+			const {id} = item;
+			const label = this.props.renderItem(item);
+			
 			return (
 				<li className="list-group-item" 
 					key={id}
 					onClick={() => this.props.onItemSelected(id)}>
-					{name}
+					{label}
 				</li>
 			);
 		});
@@ -38,10 +52,10 @@ export default class ItemList extends Component {
 
 	render() {
 
-		const { peopleList } = this.state;
+		const { itemList } = this.state;
 
-		const spinner = peopleList ? null : <li className="list-group-item text-center"><Spinner/></li>;
-		const items = peopleList ? this.renderItems(peopleList) : null;
+		const spinner = itemList ? null : <li className="list-group-item text-center"><Spinner/></li>;
+		const items = itemList ? this.renderItems(itemList) : null;
 
 		return (
 			<ul className="item-list list-group">

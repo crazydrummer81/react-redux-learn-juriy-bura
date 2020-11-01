@@ -42,6 +42,8 @@ export default class PersonDetails extends Component {
 
 	updatePerson() {
 		const { personId } = this.props;
+		console.log('personId:', personId);
+		console.log('PersonDetais:', this.props);
 		
 		if (!personId) {
 			return;
@@ -66,7 +68,7 @@ export default class PersonDetails extends Component {
 		const content = hasData ? <PersonView person={person}/> : null;
 
 		return (
-			<div className="person-details card">
+			<div className="item-details card">
 				{errorMessage}
 				{spinner}
 				{content}
