@@ -19,10 +19,8 @@ export default class ItemList extends Component {
 	componentDidMount() {
 
 		const { getData } = this.props;
-		console.log('getData:',getData());
 
 		getData()
-		// this.swapiService.getAllItem()
 			.then((itemList) => {
 				this.setState({
 					itemList
@@ -31,9 +29,6 @@ export default class ItemList extends Component {
 	};
 
 	renderItems(arr) {
-		//todo people gender birthYear
-		//todo planet diametr
-		//todo starship model
 
 		return arr.map((item) => {
 			

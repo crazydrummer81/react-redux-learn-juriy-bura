@@ -7,8 +7,7 @@ import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
-
-
+import Row from '../Row';
 
 export default class PeoplePage extends Component {
 
@@ -34,24 +33,25 @@ export default class PeoplePage extends Component {
 	render() {
 		if (this.state.hasError) {
 			return <ErrorIndicator/>
-		}
+		};
+
+		const itemList = (
+			<ItemList 
+				onItemSelected={this.onItemSelected}
+				getData={this.swapiService.getAllPeople}
+				renderItem={({name, gender, birthYear}) => 
+						<React.Fragment>
+							<strong>{name}</strong> <span>gender: {gender}, BY: {birthYear}</span>
+						</React.Fragment>
+				}/>
+		);
+
+		const personDetails = (
+			<PersonDetails personId={this.state.selectedPerson}/>
+		);
 
 		return (
-			<div className="row mb2 people-page">
-				<div className="col-md-6">
-					<ItemList 
-						onItemSelected={this.onItemSelected}
-						getData={this.swapiService.getAllPeople}
-						renderItem={({name, gender, birthYear}) => 
-								<React.Fragment>
-									<strong>{name}</strong> <span>gender: {gender}, BY: {birthYear}</span>
-								</React.Fragment>
-						}/>
-				</div>
-				<div className="col-md-6">
-					<PersonDetails personId={this.state.selectedPerson}/>
-				</div>
-			</div>
+			<Row left={itemList} right={personDetails} />
 		);
 	};
 };

@@ -4,6 +4,8 @@
 	flex-direction: row;
 	align-items: flex-start;
 	justify-content: center;
+	height: auto;
+	transition: all .2s;
 }
 
 .random-planet .planet-image {
