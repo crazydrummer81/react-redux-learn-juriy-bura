@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 
 import './people-page.css';
 
+
 import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 import Row from '../Row';
+import ErrorBoundry from '../error-boundry';
 
 export default class PeoplePage extends Component {
 
@@ -15,13 +17,6 @@ export default class PeoplePage extends Component {
 
 	state = {
 		selectedPerson: 3,
-		gasError: false
-	};
-
-	componentDidCatch(error, info) {
-		this.setState({
-			hasError: true
-		});
 	};
 
 	onItemSelected = (selectedPerson) => {
@@ -40,14 +35,16 @@ export default class PeoplePage extends Component {
 				onItemSelected={this.onItemSelected}
 				getData={this.swapiService.getAllPeople}
 				renderItem={({name, gender, birthYear}) => 
-						<React.Fragment>
-							<strong>{name}</strong> <span>gender: {gender}, BY: {birthYear}</span>
-						</React.Fragment>
+					<React.Fragment>
+						<strong>{name}</strong> <span>gender: {gender}, BY: {birthYear}</span>
+					</React.Fragment>
 				}/>
 		);
 
 		const personDetails = (
-			<PersonDetails personId={this.state.selectedPerson}/>
+			<ErrorBoundry>
+				<PersonDetails personId={this.state.selectedPerson}/>
+			</ErrorBoundry>
 		);
 
 		return (

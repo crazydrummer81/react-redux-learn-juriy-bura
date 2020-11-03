@@ -8,10 +8,6 @@ import './item-list.css';
 
 export default class ItemList extends Component {
 
-	// swapiService = new SwapiService();
-
-	
-	
 	state = {
 		itemList: null
 	};
