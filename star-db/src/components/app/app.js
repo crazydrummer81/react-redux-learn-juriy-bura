@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 
 import './app.css';
 
-import PersonDetails from '../person-details';
+import ItemDetails from '../item-details';
 import ItemList from '../item-list';
 import RandomPlanet from '../random-planet';
 import Header from '../header';
@@ -54,7 +54,7 @@ export default class App extends Component {
 								</React.Fragment>}/>
 					</div>
 					<div className="col-md-6">
-						<PersonDetails personId={this.state.selectedPerson}/>
+						<ItemDetails itemId={this.state.selectedPerson}/>
 					</div>
 				</div>
 
@@ -69,7 +69,7 @@ export default class App extends Component {
 								</React.Fragment>}/>
 					</div>
 					<div className="col-md-6">
-						<PersonDetails personId={this.state.selectedStarship}/>
+						<ItemDetails itemId={this.state.selectedStarship}/>
 					</div>
 				</div>
 

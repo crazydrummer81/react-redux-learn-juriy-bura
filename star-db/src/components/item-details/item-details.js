@@ -4,9 +4,9 @@ import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 
-import './person-details.css';
+import './item-details.css';
 
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
 
 	swapiService = new SwapiService();
 
@@ -21,7 +21,7 @@ export default class PersonDetails extends Component {
 	};
 
 	componentDidUpdate(prevProps) {
-		if (this.props.personId !== prevProps.personId) {
+		if (this.props.itemId !== prevProps.itemId) {
 			this.updatePerson();
 		};
 	};
@@ -41,11 +41,9 @@ export default class PersonDetails extends Component {
 	};
 
 	updatePerson() {
-		const { personId } = this.props;
-		console.log('personId:', personId);
-		console.log('PersonDetais:', this.props);
+		const { itemId } = this.props;
 		
-		if (!personId) {
+		if (!itemId) {
 			return;
 		};
 
@@ -53,7 +51,7 @@ export default class PersonDetails extends Component {
 			loading: true
 		});
 		this.swapiService
-			.getPerson(personId)
+			.getPerson(itemId)
 			.then(this.onPersonLoaded)
 			.catch(this.onError)
 	};

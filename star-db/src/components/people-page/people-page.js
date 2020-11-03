@@ -7,9 +7,10 @@ import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
+import PersonDetails from '../item-details';
 import Row from '../Row';
 import ErrorBoundry from '../error-boundry';
+import ItemDetails from '../item-details';
 
 export default class PeoplePage extends Component {
 
@@ -43,7 +44,7 @@ export default class PeoplePage extends Component {
 
 		const personDetails = (
 			<ErrorBoundry>
-				<PersonDetails personId={this.state.selectedPerson}/>
+				<ItemDetails itemId={this.state.selectedPerson}/>
 			</ErrorBoundry>
 		);
 
